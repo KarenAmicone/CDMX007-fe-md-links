@@ -18,8 +18,8 @@ if(infoRequired.length > 0) {
         links.validating(linksArray);
     } else if (stats){
         links.counting(linksArray);
-        //No sale validate y stats
-    }else if (validate && stats) {
+        //No funciona validate y stats
+    }else if ((infoRequired.includes('--validate') && infoRequired.includes('--stats'))) {
         links.validatePlusStats(linksArray);
     }
   }
