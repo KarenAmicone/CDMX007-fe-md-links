@@ -14,13 +14,13 @@ if(infoRequired.length > 0) {
   };
 
   const typeOfValidation = (linksArray) => {
-    if(validate) {
-        links.validating(linksArray);
+    if(validate && stats) {
+        links.validatePlusStats(linksArray);
     } else if (stats){
         links.counting(linksArray);
         //No funciona validate y stats
-    }else if ((infoRequired.includes('--validate') && infoRequired.includes('--stats'))) {
-        links.validatePlusStats(linksArray);
+    } else if (validate) {
+        links.validating(linksArray);
     }
   }
 

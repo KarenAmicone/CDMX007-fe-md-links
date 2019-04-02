@@ -42,7 +42,7 @@ const counting = (linksArray) => {
 };
 
 const validatePlusStats = (linksArray) => {
-  console.log(`Estás validando y contando ${linksArray}`);
+  console.log(`Estás validando y contando`);
 };
 
 module.exports.mdLinks = mdLinks;
