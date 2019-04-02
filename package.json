@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "eslint": "eslint --ext .js src/ test/",
-    "pretest": "npm run eslint",
     "test": "jest --coverage"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-plugin-jest": "^22.1.2",
     "jest": "^24.5.0"
   }
 }

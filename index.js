@@ -1,28 +1,32 @@
 const fs = require('fs');
 const path = require('path');
+const links = require('./links');
 
 
-const lookForReadMe =
-fs.readdir('./', (err, files) => {
-if(err){
-    console.log("Error");
-} else{
-    console.log(files);
-    files.forEach(element => {
-    if(path.extname(element) === ".md"){
-       let mdFile= element;
-       fs.readFile(`./${mdFile}`, 'utf8', (err,data) =>
-            {
-                if(err)
-                    console.log(err)
-                else
-                    console.log(data);
-            });
+const lookForReadMe =  (givenPath)  => {
+    fs.readdir(givenPath, (err, files) => {
+    if(err){
+        console.log("Error");
     } else{
-        console.log("No existe el archivo .md")
-    }   
-    });
-}
-});
+        files.forEach(element => {
+        if(path.extname(element) === ".md"){
+        let mdFile= element;
+        fs.readFile(`${givenPath}/${mdFile}`, 'utf8', (err,data) =>
+                {
+                    if(err){
+                        console.log(err)
+                    }else
+                        links.mdLinks(data);
 
-module.exports = lookForReadMe;
+                });
+        }
+        });
+    }
+    });
+};
+
+module.exports.lookFor = lookForReadMe;
+
+
+
+
