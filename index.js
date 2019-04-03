@@ -16,7 +16,7 @@ const lookForReadMe =  (givenPath)  => {
                     if(err){
                         console.log(err)
                     }else
-                        links.mdLinks(data);
+                        links.mdLinks(data, mdFile, givenPath);
 
                 });
         }

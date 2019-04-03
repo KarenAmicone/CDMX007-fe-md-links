@@ -13,14 +13,14 @@ if(infoRequired.length > 0) {
     }
   };
 
-  const typeOfValidation = (linksArray) => {
+  const typeOfValidation = (linksArray, File, Path) => {
     if(validate && stats) {
-        links.validatePlusStats(linksArray);
+        console.log('Falta esta función :/')
     } else if (stats){
-        links.counting(linksArray);
-        //No funciona validate y stats
+        links.counting(linksArray, File, Path);
     } else if (validate) {
-        links.validating(linksArray);
+        links.vandS(linksArray, File, Path);
+        
     }
   }
 
