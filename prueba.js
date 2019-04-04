@@ -1,8 +1,41 @@
 const https = require('https');
 const http = require('http');
-const linksArray=['http://google.com','http://google.com', 'https://lms.laboratoria.la/cohorts/cdmx-2019-01-bc-core-cdmx-2019-01-bc-core-am/courses/diseno-visual/01-fundamentos-de-diseno-visual/00-historia-del-diseno-web']
+/*const linksArray= '(https://nodejs.org/en/), (https://nodejs.org/docs/latest-v0.10.x/api/modules.html)., (http://semver.org/), http://algo.com/2/3/'
+  
+const xyz = () => {
+const httpRegExp = /(https?:\/\/[^\)]+)/g;
+  const x = linksArray.match(httpRegExp);
+  console.log(x);
+}
 
-let statusArray=[];
+xyz();
+ */
+
+const newArr= [ 'https://nodejs.org/en/',
+  'https://nodejs.org/docs/latest-v0.10.x/api/modules.html',
+  'https://semver.org/',
+  'http://algo.com/2/3/' ]
+newArr.forEach((element)=>{
+  if (element.match(/(https:\/\/[^\')]+)/g)) {
+    https.get(element, (res) => {
+        console.log(element, res.statusCode)
+        })
+        .on('error', (e) => {
+          return e;
+        })
+      } else if (element.match(/(http:\/\/[^\']+)/g)) {
+        http.get(element, (res) => {
+          console.log(element, res.statusCode);
+          })
+          .on('error', (e) => {
+            return e;
+          })
+        }
+})
+
+
+
+/* let statusArray=[];
     const validatePlusStats = (linksArray, File) => {
       const linksNumber = linksArray.length;
       let processedLinks = 0;
@@ -49,4 +82,4 @@ let statusArray=[];
 async function vandS(linksArray, File) {
   let result = await validatePlusStats(linksArray, File);
   console.log(result);
-}
+} */

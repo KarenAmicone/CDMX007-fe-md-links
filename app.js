@@ -15,7 +15,7 @@ if(infoRequired.length > 0) {
 
   const typeOfValidation = (linksArray, File, Path) => {
     if(validate && stats) {
-        console.log('Falta esta función :/')
+        links.countigValidatedLinks(linksArray, File, Path);
     } else if (stats){
         links.counting(linksArray, File, Path);
     } else if (validate) {
