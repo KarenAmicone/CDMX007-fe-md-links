@@ -11,10 +11,7 @@ const httpRegExp = /(https?:\/\/[^\)]+)/g;
 xyz();
  */
 
-const newArr= [ 'https://nodejs.org/en/',
-  'https://nodejs.org/docs/latest-v0.10.x/api/modules.html',
-  'https://semver.org/',
-  'http://algo.com/2/3/' ]
+const newArr= [ '(https://daringfireball.net/projects/markdown/syntax)' ]
 newArr.forEach((element)=>{
   if (element.match(/(https:\/\/[^\')]+)/g)) {
     https.get(element, (res) => {

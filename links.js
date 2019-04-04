@@ -1,9 +1,13 @@
 const app = require('./app');
 const https = require('https');
 const http = require('http');
+const colors = require('colors');
+colors.setTheme({
+  stats: ['magenta', 'bold']
+});
 
 const mdLinks = (data, mdFile, givenPath) => {
-  const httpRegExp = /(https?:\/\/[^\) \' \s]+)/g;
+  const httpRegExp = /(https?:\/\/[^\) \' \" \s]+)/g;
   const linksArray = data.match(httpRegExp);
   app.typeOfValidation(linksArray, mdFile, givenPath);
 };
@@ -13,7 +17,11 @@ const counting = (linksArray, File, Path) => {
   const uniqueLinks =
     linksArray.filter((x, i, a) =>
       a.indexOf(x) == i);
-  console.log(`Hay ${linksArray.length} links en total y ${uniqueLinks.length} links únicos en el archivo ${File} en la carpeta ${Path}`);
+  console.log(
+    `Total de links: ${linksArray.length} 📊
+    Links únicos: ${uniqueLinks.length} ✅ 
+    En el archivo: ${File} 
+    De la carpeta: ${Path}`.stats);
 };
 
 let statusArray = [];
@@ -73,7 +81,8 @@ const validating = (linksArray, File, Dir) => {
   })
 };
 
-async function vandS(linksArray, File, Dir) {
+
+async function validatingLinks(linksArray, File, Dir) {
   let result = await validating(linksArray, File, Dir);
   console.log(result);
 }
@@ -94,16 +103,20 @@ const countigValidatedLinks = async (linksArray, File, Dir) => {
   const uniqueLinks =
     linksArray.filter((x, i, a) =>
       a.indexOf(x) == i);
-      
-  console.log(`Total de links: ${linksArray.length},
-  Links únicos: ${uniqueLinks.length}
-  Links con algún error: ${brokenArray.length}, 
-  Links correctos: ${okArray.length}`)
+  
+  const extraErrors = (linksArray.length - (brokenArray.length+okArray.length));
+
+  console.log(
+    ` Total de links: ${linksArray.length} 📊
+  Links únicos: ${uniqueLinks.length} ✅ 
+  Links con algún error: ${brokenArray.length} 😨 
+  Links correctos: ${okArray.length} 👍
+  Links con un tipo de error no encontrado: ${extraErrors} ❌`.stats);
 }
 
 
 module.exports.mdLinks = mdLinks;
 module.exports.validating = validating;
 module.exports.counting = counting;
-module.exports.vandS = vandS;
+module.exports.validatingLinks = validatingLinks;
 module.exports.countigValidatedLinks = countigValidatedLinks;

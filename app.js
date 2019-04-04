@@ -19,7 +19,7 @@ if(infoRequired.length > 0) {
     } else if (stats){
         links.counting(linksArray, File, Path);
     } else if (validate) {
-        links.vandS(linksArray, File, Path);
+        links.validatingLinks(linksArray, File, Path);
         
     }
   }
