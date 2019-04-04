@@ -1,4 +1,4 @@
-const app = require('./app');
+const app = require('./cli');
 const https = require('https');
 const http = require('http');
 const colors = require('colors');

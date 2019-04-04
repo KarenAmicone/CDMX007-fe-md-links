@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const index = require('./index');
 const links = require('./links');
 const infoRequired = process.argv.splice(2);

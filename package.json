@@ -1,7 +1,17 @@
 {
-  "name": "md-links",
+  "name": "your-md-links",
   "version": "0.1.0",
-  "license": "MIT",
+  "description": "your-md-links will help you to detect the unique, broken and ok links on your Markdown field (.md)",
+  "keywords": ["broken links", "markdown links", "validate links", "count links"],
+  "homepage": "https://github.com/KarenAmicone/CDMX007-fe-md-links",
+  "author": {
+    "name": "Karen Amicone",
+    "email": "karen_amicone@hotmail.com"
+  },
+  "repository": "https://github.com/KarenAmicone/CDMX007-fe-md-links",
+  "main": "cli.js",
+  "bin": {"md-links": "./cli.js"},
+  "license": "ISC",
   "scripts": {
     "test": "jest --coverage"
   },
