@@ -7,8 +7,10 @@ colors.setTheme({
 });
 
 const mdLinks = (data, mdFile, givenPath) => {
-  const httpRegExp = /(https?:\/\/[^\) \' \" \s]+)/g;
-  const linksArray = data.match(httpRegExp);
+  const firtsArray = data.match(/\((https?:\/\/[^)]+)\)/g);
+  const toStringLinksArray = firtsArray.toString();
+  const linksArray = toStringLinksArray.match(/https?:\/\/[^\) \' \" \s]+/g);
+  console.log(linksArray);
   app.typeOfValidation(linksArray, mdFile, givenPath);
 };
 
@@ -107,7 +109,9 @@ const countigValidatedLinks = async (linksArray, File, Dir) => {
   const extraErrors = (linksArray.length - (brokenArray.length+okArray.length));
 
   console.log(
-    ` Total de links: ${linksArray.length} 📊
+    `
+  Archivo ${File}, de la carpeta ${Dir}:   
+  Total de links: ${linksArray.length} 📊
   Links únicos: ${uniqueLinks.length} ✅ 
   Links con algún error: ${brokenArray.length} 😨 
   Links correctos: ${okArray.length} 👍
