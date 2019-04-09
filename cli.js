@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 const index = require('./index');
 const links = require('./links');
+const validateFile = require('./validate');
+const statsFile = require('./stats');
+const statsValidate = require('./stats_validate');
 const infoRequired = process.argv.splice(2);
 const validate = infoRequired.includes('--validate');
 const stats = infoRequired.includes('--stats');
@@ -16,11 +19,11 @@ if(infoRequired.length > 0) {
 
   const typeOfValidation = (linksArray, File, Path) => {
     if(validate && stats) {
-        links.countigValidatedLinks(linksArray, File, Path);
+        statsValidate.countigValidatedLinks(linksArray, File, Path);
     } else if (stats){
-        links.counting(linksArray, File, Path);
+        statsFile.counting(linksArray, File, Path);
     } else if (validate) {
-        links.validatingLinks(linksArray, File, Path);   
+        validateFile.validatingLinks(linksArray, File, Path);   
     }
   }
 
