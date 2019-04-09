@@ -17,17 +17,24 @@ const mdLinks = (data, mdFile, givenPath) => {
   };
 };
 
-const counting = (linksArray, File, Path) => {
-  //El método usado en uniqueLinks fue encontrado en: https://bit.ly/2UtoZ31
-  const uniqueLinks =
-    linksArray.filter((x, i, a) =>
-      a.indexOf(x) == i);
+const uniqueLinks = (linksArray) => {
+  const uniqueArray= linksArray.filter((x, i, a) =>
+    a.indexOf(x) == i);
+    return uniqueArray;
+}
+
+const printStats = (linksArray, uniqueArray, File, Path) => {
   console.log(
     `Total de links: ${linksArray.length} 📊
-    Links únicos: ${uniqueLinks.length} ✅ 
+    Links únicos: ${uniqueArray.length} ✅ 
     En el archivo: ${File} 
     De la carpeta: ${Path}`.stats);
 };
+
+async function counting (linksArray, File, Dir) {
+    let result = await uniqueLinks(linksArray);
+    printStats(linksArray, result, File, Dir)
+  }
 
 let statusArray = [];
 const validating = (linksArray, File, Dir) => {
@@ -88,37 +95,47 @@ const validating = (linksArray, File, Dir) => {
 
 
 async function validatingLinks(linksArray, File, Dir) {
-  let result = await validating(linksArray, File, Dir);
+  let unique = await uniqueLinks(linksArray);
+  let result = await validating(unique, File, Dir);
   console.log(result);
 }
 
-const countigValidatedLinks = async (linksArray, File, Dir) => {
-  let result = await validating(linksArray, File, Dir);
-  let brokenArray = [];
-  let okArray = [];
-  result.forEach((element) => {
-    if (element.Status == 200 || element.Status == 202) {
+let brokenArray = [];
+let redirectionsArray =[];
+let okArray = [];
+
+const definingStatus = (result) => {
+result.forEach((element) => {
+    if (element.Status >= 200 && element.Status <=226) {
       okArray.push(element);
     } else if (element.port == 443) {
       brokenArray.push(element);
+    } else if(element.Status >= 300 && element.Status <=307){ 
+      redirectionsArray.push(element);
     } else {
-      brokenArray.push(element)
-    }
+      brokenArray.push(element);
+    };
   });
-  const uniqueLinks =
-    linksArray.filter((x, i, a) =>
-      a.indexOf(x) == i);
-  
-  const extraErrors = (linksArray.length - (brokenArray.length+okArray.length));
+};
 
-  console.log(
+const printStatsValidate=(linksArray, uniqueLinks, File, Dir) => {
+console.log(
     `
   Archivo ${File}, de la carpeta ${Dir}:   
   Total de links: ${linksArray.length} 📊
-  Links únicos: ${uniqueLinks.length} ✅ 
-  Links con algún error: ${brokenArray.length} 😨 
-  Links correctos: ${okArray.length} 👍
-  Links con un tipo de error no encontrado: ${extraErrors} ❌`.stats);
+  Links únicos: ${uniqueLinks.length} ✅
+        Respuestas Satisfactorias: ${okArray.length} 👍
+        Redirecciones: ${redirectionsArray.length} 👉
+        Errores: ${brokenArray.length} 😨 
+  `.stats);
+};
+
+
+const countigValidatedLinks = async (linksArray, File, Dir) => {
+    let result = await uniqueLinks(linksArray);
+    let validated = await validating(result, File, Dir);
+    await definingStatus(validated);
+    printStatsValidate(linksArray, result, File, Dir);
 }
 
 
