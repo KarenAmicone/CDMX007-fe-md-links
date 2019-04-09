@@ -14,7 +14,7 @@ const lookForReadMe =  (givenPath)  => {
         fs.readFile(`${givenPath}/${mdFile}`, 'utf8', (err,data) =>
                 {
                     if(err){
-                        console.log(err)
+                        console.log(err);
                     }else
                         links.mdLinks(data, mdFile, givenPath);
 

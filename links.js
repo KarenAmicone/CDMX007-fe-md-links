@@ -8,10 +8,13 @@ colors.setTheme({
 
 const mdLinks = (data, mdFile, givenPath) => {
   const firtsArray = data.match(/\((https?:\/\/[^)]+)\)/g);
+  if (firtsArray == null){
+    console.log(`No hay links en el archivo .md`.stats);
+  }else{
   const toStringLinksArray = firtsArray.toString();
   const linksArray = toStringLinksArray.match(/https?:\/\/[^\) \' \" \s]+/g);
-  console.log(linksArray);
   app.typeOfValidation(linksArray, mdFile, givenPath);
+  };
 };
 
 const counting = (linksArray, File, Path) => {
