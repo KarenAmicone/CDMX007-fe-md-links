@@ -34,7 +34,7 @@ La librería cuenta con las siguientes opciones de validación [options]:
 
 
 
-### Códigos de estado de respuesta 
+# Códigos de estado de respuesta 
 
 ## Respuestas informativas
 
