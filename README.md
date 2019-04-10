@@ -38,10 +38,11 @@ La librería cuenta con las siguientes opciones de validación [options]:
 
 ## Respuestas informativas
 
-Code |Status Text
-100	 |Continue
-101	 |Switching Protocols
-102	 |Processing
+| Code | Status Text |
+| --- | --- |
+| 100 | Continue |
+| 101 | Switching Protocols |
+| 102 | Processing |
 
 ## Respuestas satisfactorias
 
