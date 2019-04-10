@@ -1,6 +1,6 @@
 # Your-md-links :mag:
 
-your-md-links es una herramienta que lee y analiza archivos Markdown (.md) para identificar los links que contiene y verificarlos, con el fin de reportar el número de links únicos y su estatus (200+, 300+ o 400+) :bar_chart:.
+your-md-links es una herramienta que lee y analiza archivos Markdown (.md) para identificar los links que contiene y verificarlos, con el fin de reportar el número de links únicos y su estado de respuesta :bar_chart:.
 
 La librería cuenta con las siguientes opciones de validación [options]: 
 
@@ -8,7 +8,7 @@ La librería cuenta con las siguientes opciones de validación [options]:
 
 ``--stats``devuleve el número total de links y el total de links únicos :chart_with_upwards_trend:.
 
-``--stats --validate``devuelve el número total de links, de links únicos, de links correctos y de links con error :bookmark_tabs:. 
+``--stats --validate``devuelve el número total de links, y de links únicos por grupos de estado de respuesta :bookmark_tabs:. 
 
 
 
