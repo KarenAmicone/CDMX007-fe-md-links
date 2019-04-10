@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const index = require('./index');
-const links = require('./links');
 const validateFile = require('./validate');
 const statsFile = require('./stats');
 const statsValidate = require('./stats_validate');
