@@ -1,4 +1,4 @@
-### Your-md-links :mag:
+# Your-md-links :mag:
 
 your-md-links es una herramienta que lee y analiza archivos Markdown (.md) para identificar los links que contiene y verificarlos, con el fin de reportar el número de links únicos y su estatus (200+, 300+ o 400+) :bar_chart:.
 
