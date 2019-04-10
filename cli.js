@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const index = require('./index');
-const validateFile = require('./validate');
-const statsFile = require('./stats');
-const statsValidate = require('./stats_validate');
+const index = require('./modules/index');
+const validateFile = require('./modules/validate');
+const statsFile = require('./modules/stats');
+const statsValidate = require('./modules/stats_validate');
 const infoRequired = process.argv.splice(2);
 const validate = infoRequired.includes('--validate');
 const stats = infoRequired.includes('--stats');

@@ -1,6 +1,6 @@
 {
   "name": "your-md-links",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "your-md-links will help you to detect the unique, broken and ok links on your Markdown field (.md)",
   "keywords": [
     "broken links",

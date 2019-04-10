@@ -50,7 +50,7 @@ const validating = (linksArray, File, Dir) => {
             resolve(statusArray);
           };
         });
-      }
+      }; 
     });
     processedLinks++;
     if (processedLinks === linksNumber) {
