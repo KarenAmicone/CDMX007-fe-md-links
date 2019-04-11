@@ -16,8 +16,8 @@ const mdLinks = (data, mdFile, givenPath) => {
 };
 
 const uniqueLinks = (linksArray) => {
-  const uniqueArray= linksArray.filter((x, i, a) =>
-    a.indexOf(x) == i);
+  const uniqueArray= linksArray.filter((element, index, array) =>
+    array.indexOf(element) == index);
     return uniqueArray;
 };
 
